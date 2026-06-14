@@ -1,0 +1,48 @@
+<html>
+
+<h1>Calculator</h1>
+<body>
+<style>
+    body{
+        background-color:lightblue;
+    }
+</style>
+    <label>First number</label>
+    <input type="number" id="n1" placeholder="enter number 1"/>
+    <label>Second number</label>
+    <input type="number" id="n2" placeholder="enter number 2"/>
+    <button onclick="calculate('add')">ADD</button>
+    <button onclick="calculate('sub')">SUB</button>
+    <button onclick="calculate('mul')">MUL</button>
+    <button onclick="calculate('div')">DIV</button>
+    <button onclick="scientific('log2')">LOG2</button>
+    <button onclick="scientific('log10')">LOG10</button>
+    <button onclick="scientific('sin')">SIN</button>
+    <button onclick="scientific('cos')">COS</button>
+    <button onclick="scientific('tan')">TAN</button>
+    <button onclick="matrix()">SpiralMatrix</button>
+    <h2 id="res"></h2>
+<script>
+    async function calculate(operation) {
+        const a = document.getElementById("n1").value;
+        const b = document.getElementById("n2").value;
+        const response = await
+        fetch(`http://localhost:8080/calc/${operation}/${a}/${b}`);
+        const text=await response.text();
+        document.getElementById("res").innerText=text;
+    }
+    async function scientific(operation) {
+        const value = document.getElementById("n1").value;
+        const response = await
+        fetch(`http://localhost:8080/calc/${operation}/${value}`);
+        const text=await response.text();
+        document.getElementById("res").innerText=text;
+    }
+    async function matrix(){
+        const response = await fetch(`http://localhost:8080/calc/spiral`);
+        const text=await response.text();
+        document.getElementById("res").innerText=text;
+    }
+</script>
+</body>
+</html>

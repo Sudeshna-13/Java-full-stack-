@@ -1,0 +1,42 @@
+<html>
+<body>
+
+<h1> Basic calculator</h1>
+<input type="number" id="n1" placeholder="num1">
+<input type="number" id="n2" placeholder="num2">
+<button onclick="addNumbers()">ADD</button>
+<button onclick="subNumbers()">SUB</button>
+<button onclick="mulNumbers()">MULTIPLY</button>
+<button onclick="divNumbers()">DIV</button>
+<h3 id=sum></h3>
+<script>
+function addNumbers(){
+let a=document.getElementById("n1").value;
+let b=document.getElementById("n2").value;
+let s=Number(a)+Number(b);
+document.getElementById("sum").textContent="Result: "+s;
+}
+function subNumbers(){
+let a=document.getElementById("n1").value;
+let b=document.getElementById("n2").value;
+let sub=Number(a)-Number(b);
+document.getElementById("sum").textContent="Result: "+sub;
+}
+function mulNumbers(){
+let a=document.getElementById("n1").value;
+let b=document.getElementById("n2").value;
+let mul=Number(a)*Number(b);
+document.getElementById("sum").textContent="Result: "+mul;
+}
+
+function divNumbers(){
+let a=document.getElementById("n1").value;
+let b=document.getElementById("n2").value;
+let div=Number(a)/Number(b);
+document.getElementById("sum").textContent="Result: "+div;
+}
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<html>
+<body>
+<h1>LOOK UR SEATS HERE</H1>
+<input type="number" id="n1" placeholder="seat number">
+<input type="number" id="n2" placeholder="class number(2/3)">
+<button onclick="seat()">submit</button>
+<h3 id="number"></h3>
+<script>
+function seat(){
+let a = document.getElementById("n1").value;
+let s = document.getElementById("n2").value;
+if(s==3){
+if(a<1 || a>80) document.getElementById("number").textContent="Invalid seat number ";
+else{
+if(a%8===1 || a%8===4) document.getElementById("number").textContent="Lower seat ";
+else if(a%8===2 || a%8===5) document.getElementById("number").textContent="Middle seat ";
+else if(a%8===3 || a%8===6) document.getElementById("number").textContent="Upper seat ";
+else if(a%8===7 ) document.getElementById("number").textContent="Side Lower seat ";
+else  document.getElementById("number").textContent="Side Upper seat";
+}
+}
+else{
+if(a<1 || a>60) document.getElementById("number").textContent="Invalid seat number ";
+else{
+if(a%6===1 || a%6===3) document.getElementById("number").textContent="Lower seat ";
+else if(a%6===2 || a%6===4) document.getElementById("number").textContent="Upper seat ";
+else if(a%6===5) document.getElementById("number").textContent="Side Lower seat ";
+else  document.getElementById("number").textContent="Side Upper seat";
+}
+}
+}
+</script>
+</body>
+</html>

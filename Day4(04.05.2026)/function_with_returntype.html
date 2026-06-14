@@ -1,0 +1,23 @@
+<html>
+<body>
+/* Function with argument and with return type */
+<h1> Basic calculator</h1>
+<input type="number" id="n1" placeholder="num1">
+<input type="number" id="n2" placeholder="num2">
+<button onclick="display()">ADD</button>
+<h3 id=sum></h3>
+<script>
+function display(){
+let a=document.getElementById("n1").value;
+let b=document.getElementById("n2").value;
+let n=add(a,b);
+document.getElementById("sum").textContent="Result: "+n;
+}
+function add(a,b){
+let Add=Number(a)+Number(b);
+return Add;
+}
+
+</script>
+</body>
+</html>

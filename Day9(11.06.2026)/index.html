@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cafe Orders</title>
+</head>
+<body>
+<h1>Cafe Orders</h1>
+Customer Name:<input id="customerName">
+Coffee Type:<input id="cafeType">
+<button onclick="addOrder()">Add Order</button>
+<h2>Orders</h2>
+<ul id="orderList"></ul>
+<script>
+    loadOrders();
+    async function loadOrders() {
+        const response = await fetch("/coffee");
+        const data = await response.json();
+        document.getElementById("orderList").innerHTML = "";
+        data.forEach(order => {
+            showOrder(order);
+        });
+    }
+    async function addOrder() {
+        const order = {
+            customerName: document.getElementById("customerName").value,
+            cafeType: document.getElementById("cafeType").value
+        };
+        const response = await fetch("/coffee", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(order)
+        });
+        const data = await response.json();
+        showOrder(data);
+        document.getElementById("customerName").value = "";
+        document.getElementById("cafeType").value = "";
+    }
+    function showOrder(order) {
+        const li = document.createElement("li");
+        li.textContent = "ID: " + order.id + " | Name: " + order.customerName + " | Coffee: " + order.cafeType;
+        document.getElementById("orderList").appendChild(li);
+    }
+</script>
+</body>
+</html>

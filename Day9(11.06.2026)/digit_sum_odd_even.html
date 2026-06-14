@@ -1,0 +1,25 @@
+<html>
+    <body>
+        <input type="Number" id="n1" placeholder="num1">
+        <input type="Number" id="n2" placeholder="num2">
+        <button onclick="add()">odd-even</button>
+        <h3 id="sum1"></h3>
+        <script>
+            function add(){
+                let a=document.getElementById("n1").value;
+                let b=document.getElementById("n2").value;
+                let sum=Number(a)+Number(b);
+                let ans=0;
+                while(sum!=0){
+                    let rem=sum%10;
+                    ans=ans+rem;
+                    sum=sum/10;
+                }
+                if(ans%2===0)
+                document.getElementById("sum1").textContent="even";
+                else 
+                document.getElementById("sum1").textContent="odd";
+            }
+        </script>
+    </body>
+</html>

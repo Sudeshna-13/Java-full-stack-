@@ -1,0 +1,19 @@
+@GetMapping("/armstrong/{a}")
+    public String checkArmstrong(@PathVariable int num) {
+        int original = num;
+        int org=num;
+        int count = 0;
+        while(num != 0) {
+            count++;
+            num = num / 10;
+        }
+        int ans=0;
+        while(org != 0) {
+            int val = num / 10;
+            ans=ans+(int)Math.pow(val,count);
+            num=num%10;
+        }
+
+        if (ans == original)  return "Armstrong Number";
+        else  return "Not an Armstrong Number";
+    }
